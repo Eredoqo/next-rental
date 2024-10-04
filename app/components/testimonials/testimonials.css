@@ -1,0 +1,42 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.section__description-testimonials {
+  color: #000;
+  font-size: 1.2rem;
+  line-height: 30px;
+}
+
+.title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: green;
+}
+
+.desc {
+  font-size: 1.2rem;
+  line-height: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .desc {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .testimonial img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover;
+  }
+}
