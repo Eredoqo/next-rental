@@ -1,46 +1,39 @@
-// import images from all-images/blog-img directory
-import img01 from "./../images/blog-img/blog-1.jpg";
-import img02 from "./../images/blog-img/blog-2.jpg";
-import img03 from "./../images/blog-img/blog-3.jpg";
+// app/utils/BlogData.tsx
+
+import img01 from "./../images/blog-img/Berat.jpg";
+import img02 from "./../images/blog-img/Gjirokastet.jpg";
+import img03 from "./../images/blog-img/Saranda.jpg";
 
 const blogData = [
   {
     id: 1,
-    title: "The best way to drive cars",
-    author: "Muhib",
-    date: "12 Dec, 2020",
-    time: "9pm",
+    title: "Exploring the Beauty of Berat",
     imgUrl: img01,
     description:
-      "Driving a car is more than just getting from point A to point B. It's about understanding the vehicle, the road, and the countless variables that come into play. This guide dives deep into the best practices for driving cars. It covers everything from the basics of operating a vehicle, the importance of defensive driving, to the correct way to handle the steering wheel. You'll learn how to navigate various road conditions, understand the traffic rules and signals, and how to react in emergency situations. Additionally, this guide provides tips on maintaining your car for optimal performance and safety. It discusses the importance of regular check-ups, tire maintenance, and keeping your car clean. Whether you're a beginner or an experienced driver, this comprehensive guide offers valuable insights to enhance your driving skills and ensure a safe journey every time.",
+      "Berat, known as the 'City of a Thousand Windows,' is a UNESCO World Heritage Site with its stunning Ottoman architecture and historical significance. The city boasts a unique blend of old and new, with cobbled streets, ancient castles, and beautiful mosques and churches. Explore the Berat Castle for panoramic views, visit the Ethnographic Museum to understand local culture, and stroll along the charming streets of the Mangalem and Gorica quarters. Berat's rich history and picturesque scenery make it a must-visit destination in Albania.",
     quote:
-      "Voluptua dolore takimata dolor sadipscing nonumy consetetur et. Stet sed dolores dolores dolores dolores eos.",
+      "Berat is not just a city; it’s a journey back in time with its rich history and breathtaking views.",
+    slug: "exploring-the-beauty-of-berat", // Added slug
   },
-
   {
     id: 2,
-    title: "If your car battery is down",
-    author: "Muhib",
-    date: "12 Dec, 2020",
-    time: "9pm",
+    title: "Discovering the Charm of Gjirokastër",
     imgUrl: img02,
     description:
-      "Experiencing a dead car battery can be a daunting situation. This comprehensive guide provides practical solutions when your car battery dies. It begins with identifying the signs of a dead battery, followed by detailed, step-by-step instructions on how to safely jump-start your car. You'll learn about the necessary precautions to take during the process to prevent any mishaps. The guide also explains how to use a battery charger, and when it's time to consider replacing your battery. Furthermore, it offers valuable tips on maintaining your car battery's health, such as regular cleaning and avoiding unnecessary short drives. By the end of this guide, you'll be well-equipped to handle a dead car battery situation and will know how to prolong the life of your car battery.",
+      "Gjirokastër, another UNESCO World Heritage Site, is renowned for its well-preserved Ottoman architecture and stunning natural surroundings. The city is famous for its imposing fortress, which offers panoramic views of the Drino Valley. Wander through the old bazaar, explore traditional houses with their characteristic stone facades, and visit the Ethnographic Museum housed in the former home of the Albanian dictator Enver Hoxha. Gjirokastër’s rich cultural heritage and historical significance make it a captivating destination.",
     quote:
-      "Voluptua dolore takimata dolor sadipscing nonumy consetetur et. Stet sed dolores dolores dolores dolores eos.",
+      "Gjirokastër’s timeless charm and historical allure offer a unique glimpse into Albania’s past.",
+    slug: "discovering-the-charm-of-gjirokaster", // Added slug
   },
-
   {
     id: 3,
-    title: "The best way to give trip",
-    author: "Muhib",
-    date: "12 Dec, 2020",
-    time: "9pm",
+    title: "The Scenic Beauty of Saranda",
     imgUrl: img03,
     description:
-      "Organizing a trip can be a daunting task, but with the right approach, it can be a breeze. This guide provides a comprehensive roadmap to planning and executing a successful trip. It starts with the basics of choosing the right destination based on your interests and budget. It then delves into the details of booking accommodations, planning your itinerary, and packing essentials. You'll also find tips on how to handle unexpected situations and make the most of your trip. The guide also covers the importance of travel insurance and how to stay safe while traveling. Additionally, it provides insights on how to make your trip more sustainable and responsible. Whether you're planning a solo adventure, a family vacation, or a business trip, this guide has got you covered.",
+      "Saranda is a picturesque coastal town located on the Ionian Sea, known for its stunning beaches and vibrant nightlife. The town offers crystal-clear waters, beautiful beaches like Ksamil and Mirror Beach, and a charming promenade lined with cafes and restaurants. Saranda is also a gateway to the nearby UNESCO World Heritage site of Butrint, an ancient city with well-preserved ruins. Whether you’re looking to relax on the beach, explore ancient history, or enjoy a lively evening out, Saranda has something for everyone.",
     quote:
-      "Voluptua dolore takimata dolor sadipscing nonumy consetetur et. Stet sed dolores dolores dolores dolores eos.",
+      "Saranda’s blend of beautiful beaches and rich history makes it a perfect destination for relaxation and exploration.",
+    slug: "the-scenic-beauty-of-saranda", // Added slug
   },
 ];
 

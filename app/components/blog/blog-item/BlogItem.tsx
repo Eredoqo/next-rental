@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   Card,
@@ -6,16 +6,21 @@ import {
   CardContent,
   Typography,
   Button,
-  Link,
+  Link as MuiLink,
   Box,
   Stack,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import Link from "next/link";
+
+import "./blog-item.css";
 
 const BlogItem = ({ item }: any) => {
-  const { imgUrl, title, author, date, description, time } = item;
+  const { imgUrl, title, description, slug } = item;
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <Grid
@@ -42,13 +47,19 @@ const BlogItem = ({ item }: any) => {
       >
         <CardMedia
           component="img"
-          style={{ borderRadius: "15px" }}
+          style={{
+            borderRadius: "10px",
+            width: "100%",
+            height: "200px",
+            objectFit: "cover",
+          }}
+          top
           image={imgUrl.src}
           alt="Card image cap"
         />
         <CardContent>
           <Stack spacing={2}>
-            <Typography variant="h5" style={{ color: "green" }}>
+            <Typography variant="h6" style={{ color: "green" }}>
               {title}
             </Typography>
             <Typography
@@ -65,51 +76,30 @@ const BlogItem = ({ item }: any) => {
                 ? description.substr(0, 110)
                 : description}
             </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                borderRadius: "20px",
-                backgroundColor: "#0317ac",
-                padding: "8px 0px",
-                width: "35%",
-              }}
-            >
-              <Link
-                href={`/cars/${""}`}
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                  fontWeight: 500,
+            {isClient && (
+              <Button
+                variant="contained"
+                sx={{
+                  borderRadius: "20px",
+                  backgroundColor: "#0317ac",
+                  padding: "8px 0px",
+                  width: "35%",
                 }}
               >
-                Read More
-              </Link>
-            </Button>
+                <Link href={`/blogdetails/${slug}`} passHref>
+                  <Typography
+                    style={{
+                      textDecoration: "none",
+                      color: "#fff",
+                      fontWeight: 500,
+                    }}
+                  >
+                    Read More
+                  </Typography>
+                </Link>
+              </Button>
+            )}
           </Stack>
-
-          <Box
-            sx={{
-              pt: 3,
-              mt: 3,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography component="span" className="blog__author">
-              <PersonIcon sx={{ color: "#f9a826" }} /> {author}
-            </Typography>
-
-            <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
-              <Typography component="span" className="section__description">
-                <CalendarTodayIcon sx={{ color: "#f9a826" }} /> {date}
-              </Typography>
-
-              <Typography component="span" className="section__description">
-                <AccessTimeIcon sx={{ color: "#f9a826" }} /> {time}
-              </Typography>
-            </Box>
-          </Box>
         </CardContent>
       </Card>
     </Grid>

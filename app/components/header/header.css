@@ -1,7 +1,7 @@
 .header__top {
   padding: 10px 0px;
   background: #008bcc;
-  color: #fff;
+  color: none;
 }
 
 .header__top__left {
@@ -21,8 +21,8 @@
 }
 
 .header__top__help i {
-  background: #fff;
-  color: 008BCC;
+  /* background: #fff; */
+  color: #008bcc;
   padding: 2px 4px;
   border-radius: 50px;
   font-size: 0.7rem;
@@ -30,12 +30,12 @@
 
 .header__top__right a {
   text-decoration: none;
-  color: #fff;
+  /* color: #fff; */
   font-size: 0.9rem;
 }
 
 .header__top__right a:hover {
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* ============ header middle style =========== */
@@ -90,24 +90,24 @@
   align-items: center;
   column-gap: 0.4rem;
   text-decoration: none;
-  color: #fff;
+  /* color: #fff; */
   justify-content: flex-end;
   font-size: 0.9rem;
 }
 
 .header__btn a:hover {
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* ================ main navbar styles =========== */
 
 .main__navbar {
-  padding: 15px 0px;
-  background: #008bcc;
+  padding: 5px 0px;
+  background: transparent !important; /* Force background to be transparent */
 }
 
 .mobile__menu i {
-  color: #fff;
+  /* color: #fff; */
   font-size: 1.3rem;
   cursor: pointer;
 }
@@ -120,10 +120,12 @@
   display: flex;
   align-items: center;
   column-gap: 2.7rem;
+  margin-left: 90px;
+  margin-right: 50px;
 }
 
 .nav__item {
-  color: #fff;
+  /* color: #fff; */
   text-decoration: none;
   transition: 0.3s;
 }
@@ -136,7 +138,7 @@
   display: flex;
   align-items: center;
   border-radius: 50px;
-  background: #fff;
+  /* background: #fff; */
   padding: 0px 15px;
 }
 
@@ -151,6 +153,7 @@
 .search__box input::placeholder {
   font-size: 0.8rem;
 }
+
 .search__box span i {
   color: #000;
   cursor: pointer;
@@ -158,6 +161,20 @@
 
 .nav__active {
   color: #f9a826;
+}
+
+/* ================ sticky header styles =========== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensure it stays above the hero section */
+  background: transparent !important; /* Initially transparent */
+  transition: background 0.3s ease-in-out;
+}
+
+.header.scrolled {
+  background: rgba(0, 13, 107, 0.8); /* Change background when scrolled */
 }
 
 @media only screen and (max-width: 768px) {

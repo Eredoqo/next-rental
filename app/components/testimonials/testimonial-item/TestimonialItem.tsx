@@ -25,15 +25,22 @@ const TestimonialItem = ({ testimonialData, photo }: any) => {
             src={photo}
             alt=""
             className="rounded-2"
-            style={{ width: "130px", height: "100px", borderRadius: "20%" }}
+            style={{ width: "130px", height: "100px", borderRadius: "15%" }}
           />
-          <Box>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
             <Typography variant="h4" className="mb-0 mt-3 title">
               {testimonialData.name}
             </Typography>
             <Typography variant="h5" className="desc">
               Customer
-            </Typography>
+            </Typography>{" "}
+            <Image
+              src={testimonialData.flagUrl}
+              alt=""
+              width="30"
+              height="30"
+              style={{ width: "1.5em", height: "1em" }}
+            />
           </Box>
         </Box>
       </CardContent>

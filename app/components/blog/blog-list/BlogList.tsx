@@ -2,6 +2,7 @@
 
 import blogData from "@/app/utils/BlogData";
 import BlogItem from "../blog-item/BlogItem";
+import "./../blog-details/blog-details.css";
 import { Box, Stack, Typography } from "@mui/material";
 
 const BlogList = () => {

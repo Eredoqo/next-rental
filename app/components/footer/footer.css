@@ -43,7 +43,9 @@
 
 .office__info {
   color: #fff;
-  font-weight: 300;
+  font-weight: 400;
+  margin-bottom: 10px;
+  min-width: 300px;
 }
 
 .newsletter {
@@ -69,6 +71,8 @@
 
 .footer__bottom {
   border-top: 1px solid #7c8a972f;
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 768px) {
