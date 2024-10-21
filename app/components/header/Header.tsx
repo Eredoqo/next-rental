@@ -21,11 +21,11 @@ const navLinks = [
     display: "Cars",
   },
   {
-    path: "/#blogs",
+    path: "/blogdetails/1",
     display: "Blog",
   },
   {
-    path: "/#contact",
+    path: "/contact/1",
     display: "Contact",
   },
 ];

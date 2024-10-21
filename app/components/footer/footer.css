@@ -48,6 +48,13 @@
   min-width: 300px;
 }
 
+.office__info_contact {
+  color: black;
+  font-weight: 400;
+  margin-bottom: 10px;
+  min-width: 300px;
+}
+
 .newsletter {
   display: flex;
   align-items: center;
