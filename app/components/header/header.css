@@ -1,6 +1,6 @@
 .header__top {
   padding: 10px 0px;
-  background: #008bcc;
+  background: grey;
   color: none;
 }
 
@@ -34,14 +34,11 @@
   font-size: 0.9rem;
 }
 
-.header__top__right a:hover {
-  /* color: #fff; */
-}
-
 /* ============ header middle style =========== */
 
 .header__middle {
   padding: 20px 0px;
+  background: grey;
 }
 
 .logo h1 a span {
@@ -95,15 +92,11 @@
   font-size: 0.9rem;
 }
 
-.header__btn a:hover {
-  /* color: #fff; */
-}
-
 /* ================ main navbar styles =========== */
 
 .main__navbar {
   padding: 5px 0px;
-  background: transparent !important; /* Force background to be transparent */
+  background: grey; /* Force background to be transparent */
 }
 
 .mobile__menu i {

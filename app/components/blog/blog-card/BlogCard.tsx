@@ -9,9 +9,6 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const BlogCard = ({ blog }: any) => {
   return (

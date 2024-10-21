@@ -98,71 +98,8 @@ const HeroSlider = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (headerRef.current) {
-        if (window.scrollY > 50) {
-          headerRef.current.classList.add("scrolled");
-        } else {
-          headerRef.current.classList.remove("scrolled");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <SliderContainer>
-      <Box component="header" className="header" ref={headerRef}>
-        <Box
-          className="main__navbar"
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <IconButton className="mobile__menu" onClick={toggleMenu}>
-            <MenuIcon />
-          </IconButton>
-
-          <Stack ml="50px">
-            <Image
-              style={{ height: "58px", width: "80px" }}
-              src={logoImg}
-              alt=""
-            />
-          </Stack>
-
-          <Stack
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-            className="navigation"
-            ref={menuRef}
-            onClick={toggleMenu}
-          >
-            <Stack direction="row" className="menu">
-              {navLinks.map((item, index) => (
-                <Link href={item.path} className="nav__item" key={index}>
-                  {item.display}
-                </Link>
-              ))}
-            </Stack>
-            <Stack direction="row" className="menu">
-              {loginNavlinks.map((item, index) => (
-                <Link href={item.path} className="nav__item" key={index}>
-                  {item.display}
-                </Link>
-              ))}
-            </Stack>
-          </Stack>
-        </Box>
-      </Box>
       {sliderImages.map((image, index) => (
         <SliderItem
           key={index}

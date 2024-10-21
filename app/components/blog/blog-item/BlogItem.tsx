@@ -91,7 +91,8 @@ const BlogItem = ({ item }: any) => {
                     style={{
                       textDecoration: "none",
                       color: "#fff",
-                      fontWeight: 500,
+                      fontWeight: 400,
+                      fontSize: "14px",
                     }}
                   >
                     Read More

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useRef, useEffect } from "react";
 import { Box, IconButton, Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -15,11 +13,11 @@ const navLinks = [
     display: "Home",
   },
   {
-    path: "/#about",
+    path: "/about/1",
     display: "About",
   },
   {
-    path: "/#cars",
+    path: "/cardetail/1",
     display: "Cars",
   },
   {
@@ -82,7 +80,7 @@ export default function Header() {
             <Image
               style={{ height: "58px", width: "80px" }}
               src={logoImg}
-              alt=""
+              alt="logo"
             />
           </Stack>
 

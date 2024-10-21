@@ -6,7 +6,6 @@ import {
   Button,
   Grid,
   Typography,
-  Link,
   Card,
   CardContent,
 } from "@mui/material";
@@ -14,6 +13,7 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SpeedIcon from "@mui/icons-material/Speed";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CarItem(props: any) {
   const { imgUrl, model, carName, automatic, speed, price } = props.item;
@@ -77,15 +77,17 @@ export default function CarItem(props: any) {
                   borderRadius: "20px",
                   backgroundColor: "#0317ac",
                   padding: "8px 0px",
-                  width: "43%",
+                  width: "35%",
                 }}
               >
                 <Link
-                  href={`/cars/${carName}`}
+                  href={`/rentmodal/${carName}`}
+                  passHref
                   style={{
                     textDecoration: "none",
                     color: "#fff",
-                    fontWeight: 500,
+                    fontWeight: 400,
+                    fontSize: "14px",
                   }}
                 >
                   Rent
@@ -97,8 +99,8 @@ export default function CarItem(props: any) {
                 sx={{
                   borderRadius: "20px",
                   backgroundColor: "#01530d",
-                  padding: "13px 0px",
-                  width: "43%",
+                  padding: "8px 0px",
+                  width: "35%",
                 }}
               >
                 <Link
@@ -106,7 +108,8 @@ export default function CarItem(props: any) {
                   style={{
                     textDecoration: "none",
                     color: "#fff",
-                    fontWeight: 500,
+                    fontWeight: 400,
+                    fontSize: "14px",
                   }}
                 >
                   Details
