@@ -13,8 +13,6 @@ const BlogDetails = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch("/api/blogs");
-
-        console.log(response, "??");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

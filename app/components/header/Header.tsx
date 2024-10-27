@@ -1,13 +1,12 @@
-"use client";
-
 import React, { useRef, useEffect, useState } from "react";
-import { Box, IconButton, Stack } from "@mui/material";
+import { Box, IconButton, Stack, Button, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { jwtDecode, JwtPayload } from "jwt-decode"; // Ensure correct import
 import logoImg from "./../../images/marlon-logo.png";
-
+import LoginModal from "../LoginModal";
 import "./header.css";
 
 const navLinks = [
@@ -33,12 +32,16 @@ const navLinks = [
   },
 ];
 
+type MyJwtPayload = JwtPayload & { data: { email: string; password: string } };
+
 const Header = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
 
   const [isLogged, setIsLogged] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [user, setUser] = useState<any>(null); // Store user information
 
   const toggleMenu = () => menuRef.current?.classList.toggle("menu__active");
 
@@ -61,6 +64,8 @@ const Header = () => {
     // Check if the user is logged in by checking local storage or cookies
     const token = localStorage.getItem("authToken");
     if (token) {
+      const decodedToken = jwtDecode<MyJwtPayload>(token);
+      setUser(decodedToken); // Set user information
       setIsLogged(true);
     }
   }, []);
@@ -69,7 +74,21 @@ const Header = () => {
     // Clear the token from local storage or cookies
     localStorage.removeItem("authToken");
     setIsLogged(false);
-    router.push("/");
+    setUser(null); // Clear user information
+    router.push("/adminpage");
+  };
+
+  const handleLoginOpen = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const handleLoginClose = () => {
+    setIsLoginModalOpen(false);
+  };
+
+  const handleLoginSuccess = (user: any) => {
+    setIsLogged(true);
+    setUser(user); // Set user information
   };
 
   return (
@@ -113,18 +132,27 @@ const Header = () => {
             </Stack>
             <Stack direction="row" className="menu">
               {isLogged ? (
-                <Link href="#" className="nav__item" onClick={handleLogout}>
-                  Logout
-                </Link>
+                <>
+                  <Typography>{user?.name}</Typography>{" "}
+                  {/* Display user name */}
+                  <Link href="#" className="nav__item" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </>
               ) : (
-                <Link href="/login" className="nav__item">
+                <Button onClick={handleLoginOpen} className="nav__item">
                   Login as Admin
-                </Link>
+                </Button>
               )}
             </Stack>
           </Stack>
         </Box>
       </Box>
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={handleLoginClose}
+        onLoginSuccess={handleLoginSuccess}
+      />
     </Box>
   );
 };
