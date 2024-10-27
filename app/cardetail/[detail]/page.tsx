@@ -1,9 +1,36 @@
-import React from "react";
-import carData from "@/app/utils/CarData";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import CarItem from "../../components/car-gallery/car-item/CarItem";
 
+interface Car {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+}
+
 export default function CarDetailPage() {
+  const [carData, setCarData] = useState<Car[]>([]);
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await fetch("/api/cars");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setCarData(data);
+      } catch (error) {
+        console.error("Failed to fetch car data:", error);
+      }
+    };
+
+    fetchCars();
+  }, []);
+
   return (
     <Box id="cars" sx={{ background: "#F0F3F4", p: "40px 80px" }}>
       <Stack alignItems="center" pb={8}>

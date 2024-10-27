@@ -1,11 +1,33 @@
 "use client";
 
-import blogData from "@/app/utils/BlogData";
+import React, { useEffect, useState } from "react";
 import BlogItem from "../blog-item/BlogItem";
 import "./../blog-details/blog-details.css";
 import { Box, Stack, Typography } from "@mui/material";
+import { Blog } from "../../@types/BlogTypes";
+import blogData from "../../utils/BlogData";
 
 const BlogList = () => {
+  const [blogData, setBlogData] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setBlogData(data);
+      } catch (error) {
+        console.error("Failed to fetch blog data:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
   return (
     <Box id="blogs" pt={5} pb={5} pl={10} pr={10}>
       <Stack alignItems="center" pb={8}>

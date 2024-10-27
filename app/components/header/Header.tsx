@@ -33,7 +33,7 @@ const navLinks = [
 const loginNavlinks = [
   {
     path: "/#login",
-    display: "Login",
+    display: "Login as Admin",
   },
   {
     path: "/#logout",

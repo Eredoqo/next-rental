@@ -1,11 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Typography, Box } from "@mui/material";
 import Image from "next/image";
 import blogData from "../../utils/BlogData";
+import { Blog } from "../../@types/BlogTypes";
 
 const BlogDetails = () => {
+  const [blogData, setBlogData] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blogs");
+
+        console.log(response, "??");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setBlogData(data);
+      } catch (error) {
+        console.error("Failed to fetch blog data:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
   return (
     <Box margin="70px 0px">
       <Container>

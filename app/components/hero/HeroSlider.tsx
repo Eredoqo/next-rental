@@ -22,7 +22,7 @@ import "./../header/header.css";
 
 interface SliderItemProps {
   bgImage: string;
-  isVisible: boolean;
+  isvisible: boolean;
 }
 
 const SliderContainer = styled(Box)({
@@ -32,16 +32,16 @@ const SliderContainer = styled(Box)({
   zIndex: 0, // Ensures it's behind the content below
 });
 
-const SliderItem = styled(Box)<SliderItemProps>(({ bgImage, isVisible }) => ({
+const SliderItem = styled(Box)<SliderItemProps>(({ bgImage, isvisible }) => ({
   maxWidth: "100%",
   height: "650px",
   background: `linear-gradient(rgba(0, 13, 107, 0.5), rgba(0, 13, 107, 0.5)), url(${bgImage})`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  opacity: isVisible ? 1 : 0,
+  opacity: isvisible ? 1 : 0,
   transition: "opacity 1s ease-in-out",
-  position: isVisible ? "relative" : "absolute", // Absolute only for inactive slides
+  position: isvisible ? "relative" : "absolute", // Absolute only for inactive slides
   top: 0,
   left: 0,
   width: "100%",
@@ -104,7 +104,7 @@ const HeroSlider = () => {
         <SliderItem
           key={index}
           bgImage={image}
-          isVisible={index === currentSlide}
+          isvisible={index === currentSlide}
         >
           <Container>
             <Grid container alignItems="center" style={{ paddingTop: "150px" }}>

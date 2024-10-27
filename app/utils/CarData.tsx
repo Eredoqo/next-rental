@@ -6,8 +6,9 @@ import img04 from "./../images/cars-img/nissan-offer.png";
 import img05 from "./../images/cars-img/offer-toyota.png";
 import img06 from "./../images/cars-img/mercedes-offer.png";
 import img07 from "./../images/cars-img/toyota-offer-2.png";
+import { CarItem } from "../@types/CarTypes";
 
-const carData = [
+const carData: CarItem[] = [
   {
     id: 1,
     brand: "Volkswagen",
