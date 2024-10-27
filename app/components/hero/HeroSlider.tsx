@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import {
   Container,
@@ -29,10 +28,12 @@ const SliderContainer = styled(Box)({
   position: "relative",
   height: "650px",
   overflow: "hidden",
-  zIndex: 0, // Ensures it's behind the content below
+  zIndex: 0,
 });
 
-const SliderItem = styled(Box)<SliderItemProps>(({ bgImage, isvisible }) => ({
+const SliderItem = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "isvisible",
+})<SliderItemProps>(({ bgImage, isvisible }) => ({
   maxWidth: "100%",
   height: "650px",
   background: `linear-gradient(rgba(0, 13, 107, 0.5), rgba(0, 13, 107, 0.5)), url(${bgImage})`,
@@ -41,7 +42,7 @@ const SliderItem = styled(Box)<SliderItemProps>(({ bgImage, isvisible }) => ({
   backgroundSize: "cover",
   opacity: isvisible ? 1 : 0,
   transition: "opacity 1s ease-in-out",
-  position: isvisible ? "relative" : "absolute", // Absolute only for inactive slides
+  position: isvisible ? "relative" : "absolute",
   top: 0,
   left: 0,
   width: "100%",

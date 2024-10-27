@@ -1,6 +1,19 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export default clerkMiddleware();
+export default async function middleware(request: NextRequest) {
+  // Await the clerkMiddleware to ensure all async operations are completed
+  await clerkMiddleware()(request);
+
+  // Access headers directly
+  const headers = request.headers;
+  // Process headers as needed
+  for (const [key, value] of headers.entries()) {
+    console.log(`${key}: ${value}`);
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [

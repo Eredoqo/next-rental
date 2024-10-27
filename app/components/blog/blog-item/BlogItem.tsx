@@ -53,7 +53,6 @@ const BlogItem = ({ item }: any) => {
             height: "200px",
             objectFit: "cover",
           }}
-          top
           image={imgUrl.src}
           alt="Card image cap"
         />

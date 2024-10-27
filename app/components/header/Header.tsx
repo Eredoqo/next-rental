@@ -1,8 +1,11 @@
-import React, { useRef, useEffect } from "react";
+"use client";
+
+import React, { useRef, useEffect, useState } from "react";
 import { Box, IconButton, Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import logoImg from "./../../images/marlon-logo.png";
 
 import "./header.css";
@@ -30,20 +33,12 @@ const navLinks = [
   },
 ];
 
-const loginNavlinks = [
-  {
-    path: "/#login",
-    display: "Login as Admin",
-  },
-  {
-    path: "/#logout",
-    display: "Logout",
-  },
-];
-
-export default function Header() {
+const Header = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const headerRef = useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
+
+  const [isLogged, setIsLogged] = useState(false);
 
   const toggleMenu = () => menuRef.current?.classList.toggle("menu__active");
 
@@ -61,6 +56,21 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Check if the user is logged in by checking local storage or cookies
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsLogged(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Clear the token from local storage or cookies
+    localStorage.removeItem("authToken");
+    setIsLogged(false);
+    router.push("/");
+  };
 
   return (
     <Box component="header" className="header" ref={headerRef}>
@@ -102,15 +112,21 @@ export default function Header() {
               ))}
             </Stack>
             <Stack direction="row" className="menu">
-              {loginNavlinks.map((item, index) => (
-                <Link href={item.path} className="nav__item" key={index}>
-                  {item.display}
+              {isLogged ? (
+                <Link href="#" className="nav__item" onClick={handleLogout}>
+                  Logout
                 </Link>
-              ))}
+              ) : (
+                <Link href="/login" className="nav__item">
+                  Login as Admin
+                </Link>
+              )}
             </Stack>
           </Stack>
         </Box>
       </Box>
     </Box>
   );
-}
+};
+
+export default Header;

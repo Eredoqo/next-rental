@@ -3,13 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import CarItem from "../../components/car-gallery/car-item/CarItem";
-
-interface Car {
-  id: number;
-  name: string;
-  price: number;
-  imageUrl: string;
-}
+import { Car } from "../../@types/CarTypes";
 
 export default function CarDetailPage() {
   const [carData, setCarData] = useState<Car[]>([]);
