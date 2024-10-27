@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { Box } from "@mui/material";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <Header />
-          <Box component="main">{children}</Box>
-          <Footer />
-        </body>
-      </html>
+      <Router>
+        <html lang="en">
+          <body className={inter.className}>
+            <Header />
+            <Box component="main">{children}</Box>
+            <Footer />
+          </body>
+        </html>
+      </Router>
     </ClerkProvider>
   );
 }

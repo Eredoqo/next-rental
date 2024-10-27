@@ -2,6 +2,8 @@
   background: #a2a2ae;
   padding-top: 30px;
   padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 .footer__logo i {
