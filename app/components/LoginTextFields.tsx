@@ -53,7 +53,7 @@ export default function LoginTextFields({ onClose, onLoginSuccess }: Props) {
       const decodedToken = jwtDecode<MyJwtPayload>(data.token);
       await onClose();
       onLoginSuccess(decodedToken);
-      router.push("/adminpage");
+      router.push("/");
     } catch (error) {
       console.error("Login error:", error);
     } finally {

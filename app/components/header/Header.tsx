@@ -75,7 +75,7 @@ const Header = () => {
     localStorage.removeItem("authToken");
     setIsLogged(false);
     setUser(null); // Clear user information
-    router.push("/adminpage");
+    router.push("/");
   };
 
   const handleLoginOpen = () => {
@@ -138,6 +138,12 @@ const Header = () => {
                   <Link href="#" className="nav__item" onClick={handleLogout}>
                     Logout
                   </Link>
+                  <Button
+                    onClick={() => router.push("/adminpage")}
+                    className="nav__item"
+                  >
+                    <Typography color="#000">Admin Dashboard</Typography>
+                  </Button>
                 </>
               ) : (
                 <Button onClick={handleLoginOpen} className="nav__item">
