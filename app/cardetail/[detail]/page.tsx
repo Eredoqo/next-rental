@@ -1,29 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import CarItem from "../../components/car-gallery/car-item/CarItem";
-import { Car } from "../../@types/CarTypes";
+import { useGetCars } from "@/app/hooks/useGetCars";
+import carData from "@/app/utils/CarData";
+import CarItem from "@/app/components/car-gallery/car-item/CarItem";
 
-export default function CarDetailPage() {
-  const [carData, setCarData] = useState<Car[]>([]);
+export default function CarGallery() {
+  const { cars, loading, error } = useGetCars();
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        const response = await fetch("/api/cars");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setCarData(data);
-      } catch (error) {
-        console.error("Failed to fetch car data:", error);
-      }
-    };
+  if (loading) {
+    return <Typography>Loading...</Typography>;
+  }
 
-    fetchCars();
-  }, []);
+  if (error) {
+    return <Typography>Error: {error}</Typography>;
+  }
 
   return (
     <Box id="cars" sx={{ background: "#F0F3F4", p: "40px 80px" }}>
@@ -38,9 +30,22 @@ export default function CarDetailPage() {
         </Typography>
       </Stack>
       <Grid container spacing={3}>
-        {carData.slice(0, 6).map((item) => (
-          <CarItem item={item} key={item.id} />
-        ))}
+        {cars.map((item) => {
+          const carImage = carData.find((car) => item.carSpec[0]?.carTitle === car.carName);
+          return (
+            <CarItem
+              key={item.id}
+              item={{
+                imgUrl: carImage?.imgUrl,
+                model: item?.model,
+                carName: item.carSpec[0]?.carTitle,
+                automatic: item.carSpec[0]?.transmission,
+                seats: item.carSpec[0]?.seats,
+                price: item.carSpec[0]?.price,
+              }}
+            />
+          );
+        })}
       </Grid>
     </Box>
   );

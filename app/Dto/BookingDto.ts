@@ -1,3 +1,6 @@
+import { CarDto } from "./CarDto";
+import { UserDto } from "./UserDto";
+
 export interface BookingDto {
   id: string;
   date: Date;

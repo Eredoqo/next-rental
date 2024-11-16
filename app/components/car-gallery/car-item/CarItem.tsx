@@ -11,14 +11,17 @@ import {
 } from "@mui/material";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import SettingsIcon from "@mui/icons-material/Settings";
-import SpeedIcon from "@mui/icons-material/Speed";
+import AirlineSeatReclineExtraIcon from '@mui/icons-material/AirlineSeatReclineExtra';
 import Image from "next/image";
 import Link from "next/link";
 
+
 export default function CarItem(props: any) {
-  const { imgUrl, model, carName, automatic, speed, price } = props.item;
+  const { imgUrl, model, carName, automatic, seats, price } = props.item;
+  
 
   return (
+    <>
     <Grid item lg={4} md={4} sm={6} sx={{ mb: 5 }}>
       <Card
         sx={{
@@ -29,7 +32,7 @@ export default function CarItem(props: any) {
       >
         <CardContent>
           <Box sx={{ width: "100%" }}>
-            <Image src={imgUrl} alt="" style={{ width: "100%" }} />
+            <Image src={imgUrl} alt="" style={{ width: "100%" }}  width={100} height={250} />
           </Box>
 
           <Box sx={{ mt: 4 }}>
@@ -64,61 +67,53 @@ export default function CarItem(props: any) {
                 {automatic}
               </Box>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <SpeedIcon sx={{ color: "#f9a826", fontSize: "1.5rem" }} />{" "}
-                {speed}
+                <AirlineSeatReclineExtraIcon sx={{ color: "#f9a826", fontSize: "1.5rem" }} />{" "}
+                {seats}
               </Box>
             </Box>
             <Box
               sx={{ gap: "15px", display: "flex", justifyContent: "center" }}
             >
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#0317ac",
-                  padding: "8px 0px",
-                  width: "35%",
-                }}
+              <Link
+                href={`/rentmodal/${carName}`}
+                passHref
+                style={{ textDecoration: "none", width: "35%" }}
               >
-                <Link
-                  href={`/rentmodal/${carName}`}
-                  passHref
-                  style={{
-                    textDecoration: "none",
-                    color: "#fff",
-                    fontWeight: 400,
-                    fontSize: "14px",
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "20px",
+                    backgroundColor: "#0317ac",
+                    padding: "8px 0px",
+                    width: "100%",
                   }}
                 >
                   Rent
-                </Link>
-              </Button>
+                </Button>
+              </Link>
 
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#01530d",
-                  padding: "8px 0px",
-                  width: "35%",
-                }}
+              <Link
+                href={`/detailsmodal/${carName}`}
+                passHref
+                style={{ textDecoration: "none", width: "35%" }}
               >
-                <Link
-                  href={`/cars/${carName}`}
-                  style={{
-                    textDecoration: "none",
-                    color: "#fff",
-                    fontWeight: 400,
-                    fontSize: "14px",
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "20px",
+                    backgroundColor: "#01530d",
+                    padding: "8px 0px",
+                    width: "100%",
                   }}
                 >
                   Details
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </Box>
           </Box>
         </CardContent>
       </Card>
     </Grid>
+    </>
   );
 }

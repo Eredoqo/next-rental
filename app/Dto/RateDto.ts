@@ -1,3 +1,5 @@
+import { CarDto } from "./CarDto";
+
 export interface RateDto {
   id: string;
   carId: string;

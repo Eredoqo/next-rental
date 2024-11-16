@@ -1,3 +1,5 @@
+import { CarDto } from "./CarDto";
+
 export interface CarSpecDto {
   id: string;
   carTitle: string;

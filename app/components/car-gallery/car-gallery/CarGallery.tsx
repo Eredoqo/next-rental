@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
 import React from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import CarItem from "../car-item/CarItem";
 import { useGetCars } from "@/app/hooks/useGetCars";
+import carData from "@/app/utils/CarData";
 
-export default function CarGallery() {
+export default function CarGalleryHome() {
   const { cars, loading, error } = useGetCars();
 
   if (loading) {
@@ -16,7 +17,6 @@ export default function CarGallery() {
     return <Typography>Error: {error}</Typography>;
   }
 
-  console.log(cars, "cars");
 
   return (
     <Box id="cars" sx={{ background: "#F0F3F4", p: "40px 80px" }}>
@@ -31,9 +31,22 @@ export default function CarGallery() {
         </Typography>
       </Stack>
       <Grid container spacing={3}>
-        {cars.slice(0, 6).map((item) => (
-          <CarItem item={item} key={item.id} />
-        ))}
+        {cars.slice(0, 6).map((item) => {
+          const carImage = carData.find((car) => item.carSpec[0].carTitle === car.carName);
+          return (
+            <CarItem
+              key={item.id}
+              item={{
+                imgUrl: carImage?.imgUrl,
+                model: item.model,
+                carName: item.carSpec[0].carTitle,
+                automatic: item.carSpec[0].transmission,
+                seats: item.carSpec[0].seats,
+                price: item.carSpec[0].price,
+              }}
+            />
+          );
+        })}
       </Grid>
     </Box>
   );

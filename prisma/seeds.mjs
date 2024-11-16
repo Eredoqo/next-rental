@@ -149,6 +149,8 @@ async function seed() {
         audio: i % 2 === 0,
         climateControl: i % 2 === 0,
         carId: car.id,
+        //TODO add year to show in the details
+        
       },
     });
 

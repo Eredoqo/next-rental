@@ -1,3 +1,6 @@
+import { CarDto } from "./CarDto";
+import { UserDto } from "./UserDto";
+
 export interface RentalDto {
   id: string;
   startDate: Date;

@@ -17,7 +17,7 @@ export const useGetCars = () => {
         }
         const data: CarDto[] = await response.json();
         setCars(data);
-      } catch (error) {
+      } catch (error : any) {
         setError(error.message);
       } finally {
         setLoading(false);
