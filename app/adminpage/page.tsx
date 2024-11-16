@@ -6,7 +6,7 @@ import Layout from "../components/layout";
 import { Dashboard } from "../components/admin-component/admin-sidebar";
 
 
-const DashboardAdmin = ({ params }: { params: { admin: string } }) => {
+const DashboardAdmin = () => {
   return (
     <ProtectedRoute>
       <div>

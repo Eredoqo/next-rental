@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RateDto } from "@/app/dto/RateDto";
+import { RateDto } from "../Dto/RateDto";
 
 export const useGetRates = () => {
   const [rates, setRates] = useState<RateDto[]>([]);
@@ -15,7 +15,7 @@ export const useGetRates = () => {
         }
         const data: RateDto[] = await response.json();
         setRates(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);

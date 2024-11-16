@@ -33,13 +33,15 @@ const BlogDetails = () => {
             <Typography variant="h2" sx={{ mb: 3 }}>
               {blog.title}
             </Typography>
-            <Image
-              src={blog.imgUrl.src}
-              alt={blog.title}
-              width={blog.imgUrl.width}
-              height={blog.imgUrl.height}
-              style={{ width: "100%", height: "auto", borderRadius: "10px" }}
-            />
+            {blog.imgUrl && (
+              <Image
+                src={blog.imgUrl.src}
+                alt={blog.title}
+                width={blog.imgUrl.width}
+                height={blog.imgUrl.height}
+                style={{ width: "100%", height: "auto", borderRadius: "10px" }}
+              />
+            )}
             <Typography variant="body1" sx={{ marginTop: "20px", mt: 10 }}>
               {blog.description}
             </Typography>

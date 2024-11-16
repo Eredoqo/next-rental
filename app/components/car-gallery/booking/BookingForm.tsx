@@ -11,14 +11,14 @@ import {
   TextareaAutosize,
 } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 // import "../../styles/booking-form.css";
 
 interface BookingFormProps {
   toggle: () => void;
 }
 
-const BookingForm = ({ toggle }) => {
+const BookingForm = ({ toggle }: any) => {
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

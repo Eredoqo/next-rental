@@ -1,9 +1,9 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
+import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
 
 export default async function middleware(request: NextRequest) {
   // Await the clerkMiddleware to ensure all async operations are completed
-  await clerkMiddleware()(request);
+  await clerkMiddleware()(request, {} as NextFetchEvent);
 
   // Access headers directly
   const headers = request.headers;

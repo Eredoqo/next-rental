@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CarSpecDto } from "@/app/dto/CarSpecDto";
+import { CarSpecDto } from "../Dto/CarSpecDto";
 
 export const useGetCarSpecs = () => {
   const [carSpecs, setCarSpecs] = useState<CarSpecDto[]>([]);
@@ -15,7 +15,7 @@ export const useGetCarSpecs = () => {
         }
         const data: CarSpecDto[] = await response.json();
         setCarSpecs(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);

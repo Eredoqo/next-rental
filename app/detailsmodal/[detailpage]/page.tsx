@@ -5,10 +5,6 @@ import {
   Grid,
   Typography,
   Box,
-  Card,
-  CardContent,
-  TextField,
-  Button,
   Rating,
   Stack,
 } from "@mui/material";
@@ -26,6 +22,10 @@ import AddTestimonials from "@/app/components/testimonials/add-testimonials/AddT
 
 const CarDetails = () => {
   const dataRentDetails = carData.find((item) => item.id === item.id);
+
+  if (!dataRentDetails) {
+    return <Typography variant="h6">Car details not found</Typography>;
+  }
 
   return (
     <Box component="section">

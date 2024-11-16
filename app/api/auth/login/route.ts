@@ -34,6 +34,11 @@ export async function POST(req: Request) {
       );
     }
 
+    // Ensure JWT_SECRET is defined
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET is not defined");
+    }
+
     // Generate a token
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
       expiresIn: "1h",

@@ -27,6 +27,10 @@ import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 const CarDetails = () => {
   const dataRentDetails = carData.find((item) => item.id === item.id);
 
+  if (!dataRentDetails) {
+    return <Typography variant="h6">Car details not found</Typography>;
+  }
+
   return (
     <Box component="section">
       <Container>

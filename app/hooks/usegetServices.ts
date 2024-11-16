@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ServicesDto } from "@/app/dto/ServicesDto";
+import { ServicesDto } from "../Dto/ServicesDto";
 
 export const useGetServices = () => {
   const [services, setServices] = useState<ServicesDto[]>([]);
@@ -15,7 +15,7 @@ export const useGetServices = () => {
         }
         const data: ServicesDto[] = await response.json();
         setServices(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);

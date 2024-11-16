@@ -2,9 +2,11 @@
 
 import { LayoutWrapper } from "@/app/components/admin-component/admin-sidebar";
 import Layout from "@/app/components/layout";
+import { useGetCars } from "@/app/hooks/useGetCars";
+import { carPhotos } from "@/app/utils/carPhotos";
 import { Box, Card, Divider, Grid, Stack, Typography } from "@mui/material";
-// import { useGetCar } from "@/hooks/useGetCar";
-// import { carPhotos } from "@/utils/carPhotos";
+import Image from "next/image";
+
 
 export interface InventoryCardProps {
   name: string;
@@ -17,7 +19,7 @@ export interface InventoryCardProps {
   bookedTill?: string;
 }
 
-export function InventoryCard({
+function InventoryCard({
   name,
   model,
   year,
@@ -27,7 +29,7 @@ export function InventoryCard({
   isNew,
   bookedTill,
 }: InventoryCardProps) {
-//   const imageUrl = carPhotos[index]?.url;
+  const imageUrl = carPhotos[index]?.url;
   const formattedDate = bookedTill
     ? new Date(bookedTill).toLocaleDateString()
     : "";
@@ -90,10 +92,12 @@ export function InventoryCard({
           )}
         </Stack>
         <Stack alignItems="center">
-          <img
+          <Image
             style={{ height: "60%", width: "60%", borderRadius: " 10px" }}
-            // src={imageUrl}
+            src={imageUrl}
             alt={`${name} ${model}`}
+            width={200}
+            height={200}
           />
         </Stack>
         <Stack>
@@ -116,31 +120,30 @@ export function InventoryCard({
   );
 }
 
-export function InventoryCards() {
-//   const { cars } = useGetCar();
+export default function InventoryCards() {
+  const { cars } = useGetCars();
 
   return (
     <LayoutWrapper>
       <Layout/>
     <Grid sx={{ paddingLeft: "20px" }} container spacing={2}>
-      {/* {cars?.map((car, i) => (
+      {cars?.map((car, i) => (
         <Grid key={car.id} item xs={12} sm={4}>
           <InventoryCard
             name={car.make}
             model={car.model}
             year={car.year}
             status={car.status}
-            price={car.CarSpec && car.CarSpec[0] ? car.CarSpec[0].price : 0}
+            price={car.carSpec && car.carSpec[0] ? car.carSpec[0].price : 0}
             index={i}
             isNew={car.isNew}
-            bookedTill={car.Rentals[car.Rentals.length - 1]?.endDate}
+            bookedTill={car.rentals[car.rentals.length - 1]?.endDate?.toString()}
           />
         </Grid>
-      ))} */}
+      ))}
       
     </Grid>
     </LayoutWrapper>
   );
 }
 
-export default InventoryCards;

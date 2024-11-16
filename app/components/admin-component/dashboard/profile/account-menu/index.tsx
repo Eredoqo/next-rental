@@ -6,8 +6,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
-import { useGetUser } from "@/hooks/useGetUser";
 import { Typography } from "@mui/material";
+import { useGetUsers } from "@/app/hooks/useGetUser";
 
 interface AccountMenuProps {
   open: boolean;
@@ -15,7 +15,7 @@ interface AccountMenuProps {
 }
 
 export default function AccountMenu({ open, onClose }: AccountMenuProps) {
-  const { user } = useGetUser();
+  const { users } = useGetUsers();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -66,8 +66,8 @@ export default function AccountMenu({ open, onClose }: AccountMenuProps) {
         <MenuItem onClick={handleClose}>
           <Avatar>
             <Typography>
-              {user?.firstName[0]}
-              {user?.lastName[0]}
+              {users?.[0]?.firstName?.[0] ?? ''}
+              {users?.[0]?.lastName?.[0] ?? ''}
             </Typography>
           </Avatar>
           Profile

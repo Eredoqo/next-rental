@@ -5,8 +5,14 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { Box } from "@mui/material";
 import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
 
-function Layout({ children }: { children: React.ReactNode }) {
+interface LayoutProps {
+  children: ReactNode;
+  types?: string;
+}
+
+function Layout({ children }: LayoutProps) {
   const pathname = usePathname();
   const isAdminPage = pathname.startsWith("/adminpage");
 
@@ -19,15 +25,11 @@ function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body >
+        <body>
           <Layout>{children}</Layout>
         </body>
       </html>

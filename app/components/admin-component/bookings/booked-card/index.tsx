@@ -15,13 +15,10 @@ import {
 import { useGetRentals } from "@/app/hooks/usegetRental";
 import { RentalDto } from "@/app/Dto/RentalDto";
 import Image from "next/image";
+
   
-  interface HeaderFilterProps {
-    modelCar?: string;
-  }
-  
-  export default function BookedCard({ modelCar }: HeaderFilterProps) {
-    const { rentals,  } = useGetRentals();
+  export default function BookedCard() {
+    const { rentals  } = useGetRentals();
     const [carModel, setCarModel] = useState("");
     const [filteredRentals, setFilteredRentals] = useState<RentalDto[]>([]);
   

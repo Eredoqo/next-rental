@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import BlogItem from "../blog-item/BlogItem";
 import "./../blog-details/blog-details.css";
 import { Box, Stack, Typography } from "@mui/material";
-import { Blog } from "../../@types/BlogTypes";
-import blogData from "../../utils/BlogData";
+import { Blog } from "@/app/@types/BlogTypes";
+
 
 const BlogList = () => {
   const [blogData, setBlogData] = useState<Blog[]>([]);

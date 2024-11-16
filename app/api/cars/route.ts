@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { CarDto } from "@/app/dto/CarDto";
+import { CarDto } from "@/app/Dto/CarDto";
 
 export async function GET() {
   try {
@@ -9,6 +9,7 @@ export async function GET() {
         Rentals: {
           include: {
             User: true,
+            Car: true,
           },
         },
         Rates: true,
@@ -39,11 +40,28 @@ export async function GET() {
         totalCost: rental.totalCost,
         carId: rental.carId,
         userId: rental.userId,
+        car: {
+          id: car.id,
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          status: car.status,
+          isNew: car.isNew,
+          rentals: [],
+          rates: [],
+          carSpec: [],
+          bookings: [],
+        },
         user: {
           id: rental.User.id,
           email: rental.User.email,
-          firstName: rental.User.firstName,
-          lastName: rental.User.lastName,
+          firstName: rental.User.firstName ?? undefined,
+          lastName: rental.User.lastName ?? undefined,
+          password: rental.User.password ?? undefined,
+          createdAt: rental.User.createdAt ?? undefined,
+          updatedAt: rental.User.updatedAt ?? undefined,
+          bookings: [], 
+          rentals: [], 
         },
       })),
       rates: car.Rates.map((rate) => ({
@@ -51,6 +69,18 @@ export async function GET() {
         carId: rate.carId,
         dailyRate: rate.dailyRate,
         weeklyRate: rate.weeklyRate,
+        car: {
+          id: car.id,
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          status: car.status,
+          isNew: car.isNew,
+          rentals: [],
+          rates: [],
+          carSpec: [],
+          bookings: [],
+        },
       })),
       carSpec: car.CarSpec.map((spec) => ({
         id: spec.id,
@@ -72,19 +102,50 @@ export async function GET() {
         audio: spec.audio,
         climateControl: spec.climateControl,
         carId: spec.carId,
+        createdAt: spec.createdAt,
+        updatedAt: spec.updatedAt,
+        car: {
+          id: car.id,
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          status: car.status,
+          isNew: car.isNew,
+          rentals: [],
+          rates: [],
+          carSpec: [],
+          bookings: [],
+        },
       })),
       bookings: car.bookings.map((booking) => ({
         id: booking.id,
         date: booking.date,
-        userId: booking.userId,
-        carId: booking.carId,
+        userId: booking.user.id,
+        carId: car.id,
         createdAt: booking.createdAt,
         updatedAt: booking.updatedAt,
+        car: {
+          id: car.id,
+          make: car.make,
+          model: car.model,
+          year: car.year,
+          status: car.status,
+          isNew: car.isNew,
+          rentals: [],
+          rates: [],
+          carSpec: [],
+          bookings: [],
+        },
         user: {
-          id: booking.User.id,
-          email: booking.User.email,
-          firstName: booking.User.firstName,
-          lastName: booking.User.lastName,
+          id: booking.user.id,
+          email: booking.user.email,
+          firstName: booking.user.firstName ?? undefined,
+          lastName: booking.user.lastName ?? undefined,
+          password: booking.user.password ?? undefined,
+          createdAt: booking.user.createdAt ?? undefined,
+          updatedAt: booking.user.updatedAt ?? undefined,
+          bookings: [],
+          rentals: [],
         },
       })),
     }));

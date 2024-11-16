@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { RentalDto } from "@/app/dto/RentalDto";
+import { RentalDto } from "../Dto/RentalDto";
 
 export const useGetRentals = () => {
   const [rentals, setRentals] = useState<RentalDto[]>([]);
@@ -15,7 +15,7 @@ export const useGetRentals = () => {
         }
         const data: RentalDto[] = await response.json();
         setRentals(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);

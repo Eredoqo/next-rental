@@ -1,6 +1,7 @@
 import { Card, Box, Typography, Stack, Divider } from "@mui/material";
 import CachedIcon from "@mui/icons-material/Cached";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Image from "next/image";
 // import Turnover from "./../../../../../images/turnover.png";
 // import Income from "./../../../../../images/Income.png";
 // import Outcome from "./../../../../../images/Outcome.png";
@@ -70,7 +71,7 @@ const StatisticsCard = ({
             </Typography>
           </Stack>
         </Stack>
-        <img style={{ height: "50px", width: "100px" }} src={image} alt="" />
+        <Image style={{ height: "50px", width: "100px" }} width={100} height={50} src={image} alt="" />
       </Box>
     </Card>
   );

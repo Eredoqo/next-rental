@@ -48,7 +48,7 @@ export default function FilterWeek() {
       "exampleImage"
     ) as HTMLImageElement;
     if (imgElement) {
-      imgElement.src = imageSrc || null;
+      imgElement.src = imageSrc || "";
     }
   }, []);
 

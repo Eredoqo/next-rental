@@ -8,7 +8,6 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 
 import { Box, Divider, Stack } from "@mui/material";
 import { LayoutWrapper } from "@/app/components/admin-component/admin-sidebar";
-// import { useGetRentals } from "@/hooks/useGetRental";
 
 interface EventInput {
   title: string;
@@ -18,32 +17,15 @@ interface EventInput {
 }
 
 const CalendarBooked: React.FC = () => {
-//   const { rentals } = useGetRentals();
   const calendarComponentRef = useRef<FullCalendar>(null);
+  const [events, setEvents] = useState<EventInput[]>([]);
 
-  const initialEvents = ""
-    // rentals?.map((rental, index) => ({
-    //   title: `Rental ID: ${rental.id}`,
-    //   start: new Date(rental.startDate).toISOString(),
-    //   end: new Date(rental.endDate).toISOString(),
-    //   backgroundColor: index % 2 === 0 ? "blue" : "green",
-    // })) || [];
-
-  const [events, setEvents] = useState<EventInput[]>(() => {
+  useEffect(() => {
     const savedEvents = localStorage.getItem("events");
-    return savedEvents ? JSON.parse(savedEvents) : initialEvents;
-  });
-
-//   useEffect(() => {
-//     if (rentals && !localStorage.getItem("events")) {
-//       const newEvents = rentals.map((rental) => ({
-//         title: `Rental ID: ${rental.id}`,
-//         start: new Date(rental.startDate).toISOString(),
-//         end: new Date(rental.endDate).toISOString(),
-//       }));
-//       setEvents(newEvents);
-//     }
-//   }, [rentals]);
+    if (savedEvents) {
+      setEvents(JSON.parse(savedEvents));
+    }
+  }, []);
 
   const handleSelectedDates = (info: { startStr: string; endStr: string }) => {
     const title = prompt("Add a reservation");
@@ -75,6 +57,7 @@ const CalendarBooked: React.FC = () => {
       });
     }
   };
+
   return (
     <LayoutWrapper>
       <h1 style={{ display: "flex", justifyContent: "center" }}>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BookingDto } from "@/app/dto/BookingDto";
+import { BookingDto } from "../Dto/BookingDto";
 
 export const useGetBookings = () => {
   const [bookings, setBookings] = useState<BookingDto[]>([]);
@@ -15,7 +15,7 @@ export const useGetBookings = () => {
         }
         const data: BookingDto[] = await response.json();
         setBookings(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);

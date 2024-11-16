@@ -16,7 +16,7 @@ export const useGetUsers = () => {
         }
         const data: UserDto[] = await response.json();
         setUsers(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
       } finally {
         setLoading(false);
