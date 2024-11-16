@@ -1,3 +1,7 @@
+"use client"
+
+import { LayoutWrapper } from "@/app/components/admin-component/admin-sidebar";
+import Layout from "@/app/components/layout";
 import { Box, Card, Divider, Grid, Stack, Typography } from "@mui/material";
 // import { useGetCar } from "@/hooks/useGetCar";
 // import { carPhotos } from "@/utils/carPhotos";
@@ -116,6 +120,8 @@ export function InventoryCards() {
 //   const { cars } = useGetCar();
 
   return (
+    <LayoutWrapper>
+      <Layout/>
     <Grid sx={{ paddingLeft: "20px" }} container spacing={2}>
       {/* {cars?.map((car, i) => (
         <Grid key={car.id} item xs={12} sm={4}>
@@ -131,7 +137,9 @@ export function InventoryCards() {
           />
         </Grid>
       ))} */}
+      
     </Grid>
+    </LayoutWrapper>
   );
 }
 

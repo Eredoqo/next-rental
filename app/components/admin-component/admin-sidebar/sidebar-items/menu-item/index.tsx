@@ -52,15 +52,15 @@ export default function MenuItems() {
     {
       text: "Users",
       icon: <PeopleOutlineIcon />,
-      path: "/users",
+      path: "/adminpage/users",
     },
     {
       text: "Transactions",
       icon: <AccountBalanceIcon />,
-      path: "/transactions",
+      path: "/adminpage/transactions",
     },
-    { text: "Settings", icon: <SettingsIcon />, path: "/settings" },
-    { text: "Car Reports", icon: <CarRentalIcon />, path: "/car-reports" },
+    { text: "Settings", icon: <SettingsIcon />, path: "/adminpage/settings" },
+    { text: "Car Reports", icon: <CarRentalIcon />, path: "/adminpage/carreports" },
   ];
 
   const logoutItem = {

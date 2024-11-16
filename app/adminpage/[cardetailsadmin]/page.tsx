@@ -1,5 +1,7 @@
 "use client"
 
+import { LayoutWrapper } from "@/app/components/admin-component/admin-sidebar";
+import Layout from "@/app/components/layout";
 import {
     TableContainer,
     Table,
@@ -58,6 +60,8 @@ import {
     };
   
     return (
+      <LayoutWrapper>
+        <Layout/>
       <Card
         sx={{
           width: "100%",
@@ -213,6 +217,7 @@ import {
           </Table>
         </TableContainer>
       </Card>
+      </LayoutWrapper>
     );
   }
   
