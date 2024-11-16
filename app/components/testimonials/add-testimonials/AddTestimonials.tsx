@@ -12,11 +12,11 @@ const AddTestimonials = () => {
     <Grid item lg={5} className="mt-5">
       <Box className="testimonial-form">
         <Typography variant="h5">Submit your testimonial</Typography>
-        <form onSubmit={""}>
+        <form onSubmit={() => console.log("Add testimonial")}>
           <TextField
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e: any) => setName(e.target.value)}
             placeholder="Your name"
             fullWidth
             required
@@ -25,7 +25,7 @@ const AddTestimonials = () => {
           <TextField
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: any) => setEmail(e.target.value)}
             placeholder="Your email"
             fullWidth
             required
@@ -34,7 +34,7 @@ const AddTestimonials = () => {
           <TextField
             type="text"
             value={testimonial}
-            onChange={(e) => setTestimonial(e.target.value)}
+            onChange={(e: any) => setTestimonial(e.target.value)}
             placeholder="Your testimonial"
             fullWidth
             required

@@ -1,22 +1,105 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  password  String
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Car {
+  id        String   @id @default(uuid())
+  make      String
+  model     String
+  year      Int
+  status    String
+  isNew     String
+  Rentals   Rental[]
+  Rates     Rate[]
+  CarSpec   CarSpec[]
+  bookings  Booking[]
+}
+
+model Booking {
+  id        String   @id @default(uuid())
+  date      DateTime
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  car       Car      @relation(fields: [carId], references: [id])
+  carId     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model CarSpec {
+  id              String   @id @default(uuid())
+  carTitle        String
+  image           String
+  description     String
+  rated           Int
+  body            String
+  price           Int
+  mileage         Int
+  transmission    String
+  seats           Int
+  fuel            String
+  gps             Boolean
+  childSeat       String
+  aircondition    Boolean
+  music           Boolean
+  carKit          Boolean
+  audio           Boolean
+  climateControl  Boolean
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  carId           String   @unique
+  Car             Car      @relation(fields: [carId], references: [id])
+}
+
+model Services {
+  id          String   @id @default(uuid())
+  serviceTitle String
+  image       String
+  description String
+  price       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String?
+  lastName  String?
+  location  String?
+  phone     String?
+  username  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  bookings  Booking[]
+  Rentals   Rental[]
+}
+
+model Rental {
+  id             String   @id @default(uuid())
+  startDate      DateTime
+  endDate        DateTime
+  pickUpLocation String
+  dropOffLocation String
+  timePickedUp   DateTime
+  timeDroppedOff DateTime
+  totalCost      Float
+  Car            Car      @relation(fields: [carId], references: [id])
+  User           User     @relation(fields: [userId], references: [id])
+  carId          String
+  userId         String
+}
+
+model Rate {
+  id        String   @id @default(uuid())
+  carId     String
+  dailyRate Float
+  weeklyRate Float
+  car       Car      @relation(fields: [carId], references: [id])
 }

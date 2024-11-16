@@ -1,9 +1,11 @@
-import { Box, Typography, Avatar, Stack } from "@mui/material";
+import { Box, Typography, Avatar, Stack, Button } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
-import AccountMenu from "../admin-dashboard/index";
+import AccountMenu from "../admin-component/account-meu/index";
+import Link from "next/link";
 
 export default function Layout() {
+
   const [isMenuOpen, setMenuOpen] = useState(false);
   return (
     <>
@@ -18,6 +20,11 @@ export default function Layout() {
           Overview
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Button
+            variant="contained"
+            sx={{ bgcolor: "primary.main", color: "white" }}>
+          <Link href={"/"}>Go to User View</Link>
+          </Button>
           <NotificationsIcon
             sx={{
               color: "grey",

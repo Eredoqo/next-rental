@@ -6,16 +6,11 @@ import {
   TextField,
   Typography,
   Button,
-  Link,
-  Stack,
 } from "@mui/material";
-import socialLinks from "../../utils/SocialLinks";
-
-import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PhoneEnabledOutlinedIcon from "@mui/icons-material/PhoneEnabledOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import InsertLinkOutlinedIcon from "@mui/icons-material/InsertLinkOutlined";
+import AddTestimonials from "@/app/components/testimonials/add-testimonials/AddTestimonials";
 
 const Contact = () => {
   return (
@@ -89,6 +84,7 @@ const Contact = () => {
             </Box>
           </Grid>
         </Grid>
+        <AddTestimonials />
       </Container>
     </Box>
   );
