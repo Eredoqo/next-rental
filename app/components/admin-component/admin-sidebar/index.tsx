@@ -41,6 +41,7 @@ const CardStack = ({ children }: CardStackProps) => (
         display: "flex",
         justifyContent: "space-between",
         flexDirection: "row",
+        paddingTop: "40px",
         paddingBottom: "40px",
         alignItems: "center",
       }}

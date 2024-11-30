@@ -25,12 +25,11 @@ const BlogItem = ({ item }: any) => {
   return (
     <Grid
       item
-      lg={4}
-      md={6}
-      sm={6}
+      spacing={4}
       className="mb-5"
       sx={{
         display: "flex",
+        justifyContent: "center",
         flexDirection: "column",
         alignItems: "stretch",
       }}
@@ -39,7 +38,6 @@ const BlogItem = ({ item }: any) => {
         sx={{
           borderRadius: "15px",
           padding: "20px",
-          width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -76,28 +74,22 @@ const BlogItem = ({ item }: any) => {
                 : description}
             </Typography>
             {isClient && (
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: "#0317ac",
-                  padding: "8px 0px",
-                  width: "35%",
-                }}
-              >
-                <Link href={`/blogdetails/${slug}`} passHref>
-                  <Typography
-                    style={{
-                      textDecoration: "none",
-                      color: "#fff",
-                      fontWeight: 400,
-                      fontSize: "14px",
-                    }}
-                  >
-                    Read More
-                  </Typography>
-                </Link>
-              </Button>
+              <Link href={`/blogdetails/${slug}`} passHref>
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "20px",
+                    backgroundColor: "#0317ac",
+                    padding: "8px 0px",
+                    width: "35%",
+                    "&:hover": {
+                      backgroundColor: "#0317ac",
+                    },
+                  }}
+                >
+                  Read More
+                </Button>
+              </Link>
             )}
           </Stack>
         </CardContent>

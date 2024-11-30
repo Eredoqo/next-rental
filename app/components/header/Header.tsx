@@ -41,7 +41,7 @@ const Header = () => {
 
   const [isLogged, setIsLogged] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [user, setUser] = useState<any>(null); // Store user information
+  const [user, setUser] = useState<any>(null); 
 
   const toggleMenu = () => menuRef.current?.classList.toggle("menu__active");
 
@@ -61,20 +61,18 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    // Check if the user is logged in by checking local storage or cookies
     const token = localStorage.getItem("authToken");
     if (token) {
       const decodedToken = jwtDecode<MyJwtPayload>(token);
-      setUser(decodedToken); // Set user information
+      setUser(decodedToken);
       setIsLogged(true);
     }
   }, []);
 
   const handleLogout = () => {
-    // Clear the token from local storage or cookies
     localStorage.removeItem("authToken");
     setIsLogged(false);
-    setUser(null); // Clear user information
+    setUser(null); 
     router.push("/");
   };
 
@@ -88,7 +86,7 @@ const Header = () => {
 
   const handleLoginSuccess = (user: any) => {
     setIsLogged(true);
-    setUser(user); // Set user information
+    setUser(user); 
   };
 
   return (
@@ -140,13 +138,29 @@ const Header = () => {
                   </Link>
                   <Button
                     onClick={() => router.push("/adminpage")}
-                    className="nav__item"
+                    variant="outlined"
+                    sx={{  borderRadius: "10px",
+                      backgroundColor: "#f9a826",
+                      width: "100%",   "&:hover": {
+                        backgroundColor: "#f9a826", 
+                      }}}
                   >
                     <Typography color="#000">Admin Dashboard</Typography>
                   </Button>
                 </>
               ) : (
-                <Button onClick={handleLoginOpen} className="nav__item">
+                <Button
+                onClick={handleLoginOpen}
+                variant="contained"
+                sx={{
+                  borderRadius: "20px",
+                  backgroundColor: "#0317ac",
+                  padding: "8px 16px",
+                  "&:hover": {
+                    backgroundColor: "#0317ac",
+                  },
+                }}
+              >
                   Login as Admin
                 </Button>
               )}

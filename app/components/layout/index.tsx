@@ -2,11 +2,12 @@ import { Box, Typography, Avatar, Stack, Button } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 import AccountMenu from "../admin-component/account-meu/index";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Layout() {
-
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
   return (
     <>
       <Box
@@ -21,9 +22,20 @@ export default function Layout() {
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Button
-            variant="contained"
-            sx={{ bgcolor: "primary.main", color: "white" }}>
-          <Link href={"/"}>Go to User View</Link>
+          onClick={() => router.push("/")}
+            variant="outlined"
+            sx={{
+              borderRadius: "10px",
+              backgroundColor: "#f9a826",
+              width: "100%",
+              "&:hover": {
+                backgroundColor: "#f9a826", 
+              }
+            }}
+          >
+              <Typography color="#000" sx={{ textDecoration: "none" }}>
+                Go to User View
+              </Typography>
           </Button>
           <NotificationsIcon
             sx={{

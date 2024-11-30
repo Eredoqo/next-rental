@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { Grid, Typography, Box, TextField, Button } from "@mui/material";
+import { Grid, Typography, Box, TextField, Button, Stack } from "@mui/material";
 
 const AddTestimonials = () => {
   const [name, setName] = useState();
@@ -9,6 +9,7 @@ const AddTestimonials = () => {
   const [testimonial, setTestimonial] = useState();
 
   return (
+    <Stack width="40%">
     <Grid item lg={5} className="mt-5">
       <Box className="testimonial-form">
         <Typography variant="h5">Submit your testimonial</Typography>
@@ -39,20 +40,20 @@ const AddTestimonials = () => {
             fullWidth
             required
             multiline
-            rows={4}
+            rows={5}
             margin="normal"
           />
           <Button
-            type="submit"
             variant="contained"
-            color="primary"
             sx={{
+              marginTop:"16px",
               borderRadius: "20px",
               backgroundColor: "#0317ac",
               padding: "8px 0px",
               width: "50%",
-              display: "flex",
-              alignItems: "center",
+              "&:hover": {
+                backgroundColor: "#0317ac",
+              },
             }}
           >
             Submit Testimonial
@@ -60,6 +61,7 @@ const AddTestimonials = () => {
         </form>
       </Box>
     </Grid>
+    </Stack>
   );
 };
 

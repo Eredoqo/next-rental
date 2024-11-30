@@ -3,21 +3,20 @@
   padding-top: 30px;
   padding-bottom: 10px;
   width: 100%;
-  text-align: center;
 }
 
 .footer__logo i {
-  color: #fff;
+  color: #000;
   font-weight: 400;
 }
 
 .footer__logo span {
-  color: #fff;
+  color: #000;
   font-weight: 500;
 }
 
 .footer__logo-content {
-  color: #fff;
+  color: #000;
   margin-top: 15px;
   line-height: 30px;
   max-width: 400px;
@@ -29,7 +28,7 @@
 }
 
 .quick__link a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-weight: 300;
   transition: 0.3s;
@@ -40,13 +39,14 @@
 }
 
 .footer__link-title {
-  color: #fff;
+  color: #000;
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
 .office__info {
-  color: #fff;
+  color: #000;
   font-weight: 400;
-  margin-bottom: 10px;
   min-width: 300px;
 }
 
@@ -64,12 +64,12 @@
   padding: 8px 12px;
   border: 1px solid #7c8a972f;
   border-radius: 50px;
-  background: #fff;
+  background: #000;
 }
 
 .newsletter input {
   background: transparent;
-  color: #fff;
+  color: #000;
   border: none;
   outline: none;
 }
@@ -79,7 +79,7 @@
 }
 
 .footer__bottom {
-  border-top: 1px solid #7c8a972f;
+  /* border-top: 2px solid #7c8a972f; */
   display: flex;
   justify-content: center;
 }

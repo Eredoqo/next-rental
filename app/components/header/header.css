@@ -118,9 +118,11 @@
 }
 
 .nav__item {
-  /* color: #fff; */
+  color: #000;
+  background-color: transparent;
   text-decoration: none;
   transition: 0.3s;
+  font-size: 18px;
 }
 
 .nav__item:hover {
@@ -131,7 +133,6 @@
   display: flex;
   align-items: center;
   border-radius: 50px;
-  /* background: #fff; */
   padding: 0px 15px;
 }
 

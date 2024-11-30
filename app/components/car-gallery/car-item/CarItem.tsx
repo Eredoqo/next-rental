@@ -31,8 +31,29 @@ export default function CarItem(props: any) {
         }}
       >
         <CardContent>
-          <Box sx={{ width: "100%" }}>
-            <Image src={imgUrl} alt="" style={{ width: "100%" }}  width={100} height={250} />
+        <Box
+          sx={{
+            width: "100%",
+            height: "180px", 
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden", 
+            borderRadius: "10px",
+          }}
+          >
+            <Image
+              src={imgUrl}
+              alt={carName}
+              layout="intrinsic"
+              style={{
+                objectFit: "contain", 
+                maxWidth: "100%",
+                height: "auto", 
+              }}
+              width={300} 
+              height={180}
+            />
           </Box>
 
           <Box sx={{ mt: 4 }}>
@@ -86,6 +107,9 @@ export default function CarItem(props: any) {
                     backgroundColor: "#0317ac",
                     padding: "8px 0px",
                     width: "100%",
+                    "&:hover": {
+                      backgroundColor: "#0317ac"
+                    }
                   }}
                 >
                   Rent
@@ -104,6 +128,9 @@ export default function CarItem(props: any) {
                     backgroundColor: "#01530d",
                     padding: "8px 0px",
                     width: "100%",
+                    "&:hover": {
+                      backgroundColor: "#01530d"
+                    }
                   }}
                 >
                   Details
